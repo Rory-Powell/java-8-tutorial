@@ -1,9 +1,10 @@
 package demo.lambdas;
 
-public class Demo
+public class DemoRunnable
 {
     public static void main(String[] args)
     {
+        // Without Lambda
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -12,8 +13,8 @@ public class Demo
         });
         t1.run();
 
-        Thread t2 = new Thread(() -> System.out.println("Hello!"));
-        t2.run();
+        // With Lambda
+
 
     }
 }
