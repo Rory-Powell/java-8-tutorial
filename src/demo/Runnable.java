@@ -1,11 +1,11 @@
-package demo.lambdas;
+package demo;
 
-public class DemoRunnable
+public class Runnable
 {
     public static void main(String[] args)
     {
-        // Without Lambda
-        Thread t1 = new Thread(new Runnable() {
+
+        Thread t1 = new Thread(new java.lang.Runnable() {
             @Override
             public void run() {
                 System.out.println("Hello!");
@@ -13,8 +13,7 @@ public class DemoRunnable
         });
         t1.run();
 
-        // With Lambda
-
-
+        Thread t2 = new Thread(() -> System.out.println("Hello lambda!"));
+        t2.run();
     }
 }
