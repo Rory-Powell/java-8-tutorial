@@ -1,13 +1,33 @@
-package demo;
+package demo.complete;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import static java.util.Comparator.comparing;
 
 public class Person
 {
    public static void main(String[] args)
    {
+      List<Person> persons = new ArrayList<>();
+      persons.add(new Person("Chris Wallace", 35, Gender.MALE));
+      persons.add(new Person("Nick Savage", 7, Gender.MALE));
+      persons.add(new Person("Ken Murphy", 67, Gender.MALE));
 
+      // Without lambda
+      Collections.sort(persons, new Comparator<Person>() {
+         @Override
+         public int compare(Person o1, Person o2) {
+            return o1.getAge().compareTo(o2.getAge());
+         }
+      });
+      printList(persons);
+
+      // With lambda
+      persons.sort(comparing(Person::getAge));
+      printList(persons);
    }
 
    public Person(String first, String last, int age, Gender gender)
